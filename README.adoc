@@ -26,6 +26,5 @@ ActivityCompat.startActivityForResult(activity, galleryIntent,100,savedInstanceS
         }
     }
 ```
-=== onActivityResult
+=== onActivityResult 문서
 https://developer.android.com/training/basics/intents/result?hl=ko
-공부
