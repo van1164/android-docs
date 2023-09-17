@@ -4,27 +4,28 @@
 = Activity
 
 == 갤러리에서 이미지 가져오기
-[[bring-image]]
-```kotlin
-val activity = this
-val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-ActivityCompat.startActivityForResult(activity, galleryIntent,100,savedInstanceState)
-```
-```kotlin
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+#onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)# 가 delicated되었다.
 
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
-            val imageUri = data.data
-
-            try {
-                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
-                Log.d("onActivityResult: ", bitmap.toString())
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-    }
-```
-=== onActivityResult 문서
+=== 활동에서 결과 가져오기 문서
 https://developer.android.com/training/basics/intents/result?hl=ko
+``` kotlin
+getContent.launch("image/*")
+```
+``` kotlin
+val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+    binding = MainLayoutBinding.inflate(layoutInflater)
+    val rectangleView = binding.rectangleView
+    uri?.let{
+        var bitmap : Bitmap
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+             val source =ImageDecoder.createSource(this.getContentResolver(), uri)
+            bitmap = ImageDecoder.decodeBitmap(source)
+        } else {
+            bitmap= MediaStore.Images.Media.getBitmap(this.contentResolver, uri)
+        }
+        rectangleView.drawImage(bitmap)
+    }
+
+}
+```
+
