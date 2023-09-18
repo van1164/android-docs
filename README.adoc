@@ -29,3 +29,7 @@ val getContent = registerForActivityResult(ActivityResultContracts.GetContent())
 }
 ```
 
+= View
+
+== ScrollView => NestedScorollView
+공부예정
