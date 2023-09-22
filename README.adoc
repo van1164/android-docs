@@ -63,7 +63,7 @@ MVVM 관점의 뷰모델 구현 시 AAC ViewModel을 쓰면 좋다.
 
 == 키보드 내리기
 
-액티비티에 dispatchTouchEvent override해서 현재 focus가 되어있는 곳이 아닌 곳을 선택하면 키보드를 내리고 focus를 취소한다.
+액티비티에 dispatchTouchEvent를 override해서 현재 focus가 되어있는 곳이 아닌 곳을 선택하면 키보드를 내리고 focus를 취소한다.
 
 ``` kotlin
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
