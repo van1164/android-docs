@@ -48,6 +48,15 @@ MVVM 관점의 뷰모델 구현 시 AAC ViewModel을 쓰면 좋다.
 
 === ViewModel
 
+= Component
+
+== Toast 메시지 띄우기
+
+``` kotlin
+            Toast.makeText(context,"전송할 메시지", Toast.LENGTH_LONG).show()
+
+```
+
 
 = Permission
 
