@@ -124,3 +124,10 @@ Navigation graph를 사용해서 시각화된 정보를 이용해서 navigation 
 1. Activity
 2. Fragment
 3. Dialog
+
+
+= ERROR
+
+==== Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
+
+retrofit에서 배열명이 없는 배열이 response로 올 경우 발생한다.
