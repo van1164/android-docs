@@ -115,6 +115,26 @@ val bottom = top + textBounds.top.toFloat()
 if ((x in left..right) and (y in bottom..top)) return index
 ```
 
+== DropDown TextEdit 만들기
+
+```xml
+    <com.google.android.material.textfield.TextInputLayout
+        ...
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        >
+
+        <AutoCompleteTextView
+            ...
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+```
+TextInputLayout에 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu" 속성을 넣고 내부에 AutoCompleteTextView를 사용한다.
+
+---
+
 = Jetpack
 
 == Jetpack Navigation
