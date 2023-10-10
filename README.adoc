@@ -29,6 +29,14 @@ val getContent = registerForActivityResult(ActivityResultContracts.GetContent())
 }
 ```
 
+== Navigation 사용시 Activity에서 현재 Fragment 불러오기
+
+``` kotlin
+val navHostFragment: Fragment? =
+    supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main)
+val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0) as IssueCreateFragment
+```
+
 = View
 
 == ScrollView => NestedScorollView
@@ -158,3 +166,5 @@ Call<List<item>> getData()
 다음과 같이 response를 List형태로 받으면 된다.
 
 [참고] https://velog.io/@steelzoo/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EB%A0%88%ED%8A%B8%EB%A1%9C%ED%95%8F-JSON-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EB%B0%B0%EC%97%B4%EB%A7%8C-%EC%9E%88%EC%9D%84%EB%95%8C%EC%97%90%EB%9F%ACExpected-BEGINOBJECT-but-was-BEGINARRAY-at-line-1-column-2-path
+
+
