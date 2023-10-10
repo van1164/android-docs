@@ -167,4 +167,17 @@ Call<List<item>> getData()
 
 [참고] https://velog.io/@steelzoo/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EB%A0%88%ED%8A%B8%EB%A1%9C%ED%95%8F-JSON-%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B0%80-%EB%B0%B0%EC%97%B4%EB%A7%8C-%EC%9E%88%EC%9D%84%EB%95%8C%EC%97%90%EB%9F%ACExpected-BEGINOBJECT-but-was-BEGINARRAY-at-line-1-column-2-path
 
+= CS
+
+== SOLID
+
+1. SRP(단일 책임원칙)
+
+클래스가 단일한 책임만 가지도록 해서 응집도가 높게!!,  결합도 관점에서도 결합도가 낮도록!
+
+2. Open-Closed Principle(OCP)
+
+소프트웨어 개체는 확장에 대해 열려 있어야하고 수정에 대해서는 닫혀 있어야한다. 즉, 기능을 추가하고자 할때는 수정없이도 일어나야한다.
+
+''' 나머지 추가 예정
 
