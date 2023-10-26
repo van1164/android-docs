@@ -193,9 +193,18 @@ Call<List<item>> getData()
 == android.os.NetworkOnMainThreadException
 네트워크 API를 직접 사용하였을 때 발생하는 오류
 코루틴을 사용해서 처리해야한다.
-``` kotlin
 
+
+=== viewModel databind 사용시 잘했는데 안나올때 확인할 것
+
+lifecycleOwner와 viewModel 설정!!
+
+``` kotlin
+val binding: YourLayoutBinding = DataBindingUtil.setContentView(this, R.layout.your_layout)
+binding.viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+binding.lifecycleOwner = this
 ```
+
 
 = CS
 
