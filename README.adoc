@@ -166,6 +166,26 @@ TextInputLayout에 style="@style/Widget.MaterialComponents.TextInputLayout.Outli
 
 ---
 
+== 스와이프 새로고침
+SwipeRefreshLayout은 단일 ListView 또는 GridView 하위 요소만 지원한다.
+```kotlin
+<android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+```
+이렇게 하면 스와이프를 했을 때, onRefresh()가 호출된다.
+onRefresh()안에 동작을 구현한다.
+데이터 업데이트가 완료되면 setRefreshing(false)을 호출한다.
+
 = Jetpack
 
 == Jetpack Navigation
