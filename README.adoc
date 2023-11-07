@@ -89,6 +89,49 @@ MVVM 관점의 뷰모델 구현 시 AAC ViewModel을 쓰면 좋다.
         )
 ```
 
+= Network
+
+== Retrofit
+Retrofit 사용 POST 매핑 예제
+``` kotlin
+interface LoginService {
+    @POST("/login")
+    fun login(
+        @Body loginRequest : LoginRequest,
+    ) : Call<LoginResponse>
+
+    companion object{
+        private const val BASE_URL = "BaseURL"
+        private val gson =
+            GsonBuilder()
+                .setLenient()
+                .create()
+
+        fun create() : LoginService {
+            return Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .client(OkHttpClient.Builder().build())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+                .create(LoginService::class.java)
+        }
+    }
+}
+```
+Retrofit 사용 GET 매핑 예제
+``` kotlin
+interface LoginService {
+    @GET("/login")
+    fun login(
+        @Query("userId") val id : String,
+        @Query("name") val name : String,
+    ) : Call<LoginResponse>
+
+   '''
+}
+```
+
+
 = Permission
 
 == workflow
