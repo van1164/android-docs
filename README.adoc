@@ -46,6 +46,17 @@ val navHostFragment: Fragment? =
 val fragment = navHostFragment?.childFragmentManager?.fragments?.get(0) as IssueCreateFragment
 ```
 
+== 전화걸기
+
+=== 전화 다이얼로 이동
+``` kotlin
+ startActivity(Intent("android.intent.action.DIAL", Uri.parse("tel:{$번호}")))
+```
+
+=== 바로 전화 걸기
+``` kotlin
+ startActivity(Intent("android.intent.action.CALL", Uri.parse("tel:{$번호}")))
+```
 = View
 
 == ScrollView => NestedScorollView
