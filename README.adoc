@@ -294,6 +294,11 @@ binding.viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
 binding.lifecycleOwner = this
 ```
 
+== Cannot access database on the main thread since it may potentially lock the UI for a long period of time.
+
+```kotlin
+MyApp.database =  Room.databaseBuilder(this, AppDatabase::class.java, "MyDatabase").allowMainThreadQueries().build()
+```
 
 = CS
 
