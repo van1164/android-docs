@@ -266,6 +266,55 @@ Navigation graph를 사용해서 시각화된 정보를 이용해서 navigation 
 3. Dialog
 
 
+= DataBase
+
+== ROOM 사용 예제
+
+엔티티 설정
+
+```kotlin
+@Entity
+data class StudyMate(
+    var name: String="",
+    var year: Int=1999,
+    var month: Int=1,
+    var day: Int=1,
+    var mbti: Mbti=Mbti.ISFP,
+    var profileImage: Bitmap? = null,
+    var uid: String? =null,
+
+    @PrimaryKey(autoGenerate = true)
+    var id : Int? =null
+
+): Serializable
+```
+
+데이터베이스 설정
+
+``` kotlin
+@Database(entities = [StudyMate::class], version = 1)
+@TypeConverters(RoomTypeConverter::class)
+abstract class StudyMateData : RoomDatabase(){
+    abstract fun studyMateDao():StudyMateDao
+
+}
+```
+
+== ROOM에서 리스트 사용 (Converter 사용)
+
+```kotlin
+class MessageListConverter {
+    @TypeConverter
+    fun listToJson(value: MutableList<Message>): String {
+        return Gson().toJson(value)
+    }
+
+    @TypeConverter
+    fun jsonToList(value: String): MutableList<Message> {
+        return Gson().fromJson(value,Array<Message>::class.java).toMutableList()
+    }
+```
+
 = ERROR
 
 == Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
