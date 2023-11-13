@@ -315,6 +315,31 @@ class MessageListConverter {
     }
 ```
 
+== ROOM에서 비트맵 사용 (Converter 사용)
+```kotlin
+    @TypeConverter
+    fun toByteArray(bitmap : Bitmap?) : ByteArray?{
+        val outputStream = ByteArrayOutputStream()
+        return if (bitmap != null){
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+            outputStream.toByteArray()
+        } else{
+            null
+        }
+
+    }
+
+    // ByteArray -> Bitmap 변환
+    @TypeConverter
+    fun toBitmap(bytes : ByteArray?) : Bitmap?{
+        return if(bytes != null){
+            BitmapFactory.decodeByteArray(bytes, 0, bytes.size)
+        } else{
+            null
+        }
+    }
+```
+
 = ERROR
 
 == Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
