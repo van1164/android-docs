@@ -157,6 +157,41 @@ interface LoginService {
 }
 ```
 
+== multipart로 이미지 보내기
+
+서비스
+
+```kotlin
+    @Multipart
+    @PUT("/lost/register")
+    fun create(
+        @Header("Authorization") authorization: String,
+        @Part image: MultipartBody.Part,
+        @Part("info") info: RequestBody
+    ): Call<Any>
+```
+
+MultipartBody.Part로 변환
+
+``` kotlin
+MultipartBody.Part.createFormData("image","sdf.png",BitmapRequestBody(bitmap))
+
+
+class BitmapRequestBody(private val bitmap: Bitmap) : RequestBody() {
+    override fun contentType(): MediaType = "image/png".toMediaType()
+
+    override fun writeTo(sink: BufferedSink) {
+        bitmap.compress(Bitmap.CompressFormat.PNG, 99, sink.outputStream())
+    }
+}
+```
+
+== 클래스를 RequestBody로 바꾸기 
+
+```kotlin
+RequestBody.create("application/json".toMediaTypeOrNull(),json)
+```
+
 
 = Permission
 
