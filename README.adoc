@@ -74,7 +74,31 @@ MVVM의 관점에서 뷰모델은 View로부터 독립적이며 View가 필요�
 
 MVVM 관점의 뷰모델 구현 시 AAC ViewModel을 쓰면 좋다.
 
-=== ViewModel
+=== DataBinding
+
+==== 데이터 바인딩시 텍스트가 안뜰경우
+
+lifecycleOwner와 viewModel을 설정하지 않았을 가능성이 크다.
+
+``` kotlin
+binding.lifecycleOwner = this
+binding.viewModel = viewModel
+```
+
+=== StateFlow 값 형태를 내맘대로 전송하고 싶다면
+
+bindingAdapter를 사용해야한다.
+
+``` kotlin
+object CreateStudyMateBindingAdapter {
+    @JvmStatic
+    @BindingAdapter("birthDate")
+    fun setBirthDate(button: Button, birth: Birth) {
+        val formattedDate = "${birth.year}-${birth.month}-${birth.day}"
+        button.text = formattedDate
+    }
+}
+```
 
 = Component
 == 캘린더에서 날짜 선택
