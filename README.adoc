@@ -113,6 +113,30 @@ lifecycleScope.launch {
 ```
 
 = Component
+
+== 지도 
+
+=== Naver Map
+
+==== 현재 위치에서 방향 따라가기
+
+```kotlin
+    private lateinit var locationSource: FusedLocationSource
+
+    locationSource = FusedLocationSource(this, 5000)
+
+
+   override fun onMapReady(map: NaverMap) {
+        this.naverMap =map
+        map.locationSource = locationSource
+        map.uiSettings.isLocationButtonEnabled = true
+        map.locationTrackingMode = LocationTrackingMode.Follow
+}
+
+   
+```
+
+
 == 캘린더에서 날짜 선택
 
 ``` kotlin
