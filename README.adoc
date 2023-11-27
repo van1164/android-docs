@@ -437,6 +437,13 @@ class MessageListConverter {
 
 = ERROR
 
+== Failed resolution of: Lcom/google/android/gms/location/LocationRequest
+
+네이버지도에서 위와 같은 오류가 생겼는데
+나의 경우,
+implementation("com.google.android.gms:play-services-location:21.0.1")
+에서 라이브러리를 최신버전으로 바꾸니 해결되었다. 
+
 == Expected BEGIN_OBJECT but was BEGIN_ARRAY at line 1 column 2 path $
 
 retrofit에서 배열명이 없는 배열이 response로 올 경우 발생한다.
