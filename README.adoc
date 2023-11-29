@@ -177,6 +177,29 @@ lifecycleScope.launch {
 
 = Network
 
+== Socket통신
+
+=== Socket IO 사용 예제
+
+``` kotlin
+ private fun socketConnect() {
+     val socket = IO.socket("URL")
+     socket.connect()
+     socket.on(io.socket.client.Socket.EVENT_CONNECT) {
+         // 소켓 서버에 연결이 성공하면 호출됨
+         Timber.i("Socket", "Connect")
+     }.on(io.socket.client.Socket.EVENT_DISCONNECT) { args ->
+         // 소켓 서버 연결이 끊어질 경우에 호출됨
+         Timber.i("Socket", "Disconnet: ${args[0]}")
+     }.on(EVENT_CONNECT_ERROR) { args ->
+         // 소켓 서버 연결 시 오류가 발생할 경우에 호출됨
+         if (args[0] is EngineIOException) {
+             Timber.i("Socket", "Connect Error")
+         }
+     }
+ }
+```
+
 == Retrofit
 Retrofit 사용 POST 매핑 예제
 ``` kotlin
