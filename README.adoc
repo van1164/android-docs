@@ -112,6 +112,20 @@ lifecycleScope.launch {
 }
 ```
 
+=== Stateflow 리스트 사용시 collect 안될때 강제로 collect 되게 하기
+
+
+```kotlin
+private val _usersUpdate = MutableStateFlow<Boolean>(false)
+```
+를 따로 둬서
+
+``` kotlin
+_usersUpdate.update { !it }
+```
+이렇게 알려주고 싶을 때마다 사용하고
+fragment나 activity에서 userUpdate를 collect하면 된다.
+
 = Component
 
 == 지도 
